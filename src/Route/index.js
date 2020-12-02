@@ -10,10 +10,10 @@ const isUrlMatcher = (matcher) =>
 const isFunctionMatcher = (matcher) => typeof matcher === 'function';
 
 class Route {
-	constructor(args) {
+	constructor(...args) {
 		const debug = getDebug('compileRoute()');
 		debug('Compiling route');
-		this.init(args);
+		this.init(...args);
 		this.sanitize();
 		this.validate();
 		this.generateMatcher();
@@ -33,9 +33,7 @@ class Route {
 		}
 	}
 
-	init(args) {
-		const [matcher, response, options = {}] = args;
-
+	init(matcher, response, options = {}) {
 		const routeConfig = {};
 
 		if (isUrlMatcher(matcher) || isFunctionMatcher(matcher)) {
@@ -143,8 +141,8 @@ class Route {
 		Route.registeredMatchers.push(matcher);
 	}
 
-	static newRoute(config) {
-		return new Route(config);
+	static compileRoute(...config) {
+		return new Route(...config);
 	}
 }
 

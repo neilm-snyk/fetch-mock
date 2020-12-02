@@ -22,7 +22,7 @@ FetchMock.mock = function (...args) {
 
 FetchMock.addRoute = function (uncompiledRoute) {
 	debug('Adding route', uncompiledRoute);
-	const route = Route.newRoute(uncompiledRoute);
+	const route = Route.compileRoute(...uncompiledRoute);
 	const clashes = this.routes.filter(({ identifier, method }) => {
 		const isMatch =
 			typeof identifier === 'function'

@@ -26,16 +26,16 @@ describe('shorthands', () => {
 
 	before(() => {
 		fm = fetchMock.createInstance();
-		sinon.spy(Route, 'newRoute');
+		sinon.spy(Route, 'compileRoute');
 		fm.config.warnOnUnmatched = false;
-		expectRoute = (...args) => expect(Route.newRoute).calledWith(args);
+		expectRoute = (...args) => expect(Route.compileRoute).calledWith(...args);
 	});
 	afterEach(() => {
-		Route.newRoute.resetHistory();
+		Route.compileRoute.resetHistory();
 		fm.restore({ sticky: true });
 	});
 
-	after(() => Route.newRoute.restore());
+	after(() => Route.compileRoute.restore());
 
 	it('has sticky() shorthand method', () => {
 		fm.sticky('a', 'b');

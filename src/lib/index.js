@@ -3,9 +3,7 @@ const setUpAndTearDown = require('./set-up-and-tear-down');
 const fetchHandler = require('./fetch-handler');
 const inspecting = require('./inspecting');
 
-
 const FetchMock = Object.assign({}, fetchHandler, setUpAndTearDown, inspecting);
-
 
 FetchMock.config = {
 	fallbackToNetwork: false,
@@ -29,7 +27,6 @@ FetchMock.createInstance = function () {
 	instance.bindMethods();
 	return instance;
 };
-
 
 FetchMock.bindMethods = function () {
 	this.fetchHandler = FetchMock.fetchHandler.bind(this);

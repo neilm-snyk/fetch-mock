@@ -19,7 +19,7 @@ FetchMock.$mock = function (...args) {
 };
 
 FetchMock.mock = function (...args) {
-	this.$mock(...args)
+	this.$mock(...args);
 	return this;
 };
 
@@ -100,9 +100,9 @@ const _defineShorthand = (methodName, underlyingMethod, shorthandOptions) => {
 };
 
 const defineShorthands = (methodName, underlyingMethod, shorthandOptions) => {
-	_defineShorthand(methodName, underlyingMethod, shorthandOptions)
-	_defineShorthand(`$${methodName}`, `$${underlyingMethod}`, shorthandOptions)
-}
+	_defineShorthand(methodName, underlyingMethod, shorthandOptions);
+	_defineShorthand(`$${methodName}`, `$${underlyingMethod}`, shorthandOptions);
+};
 
 const _defineGreedyShorthand = (methodName, underlyingMethod) => {
 	FetchMock[methodName] = function (response, options) {
@@ -110,10 +110,10 @@ const _defineGreedyShorthand = (methodName, underlyingMethod) => {
 	};
 };
 
-const defineGreedyShorthands = (methodName, underlyingMethod, shorthandOptions) => {
-	_defineGreedyShorthand(methodName, underlyingMethod)
-	_defineGreedyShorthand(`$${methodName}`, `$${underlyingMethod}`)
-}
+const defineGreedyShorthands = (methodName, underlyingMethod) => {
+	_defineGreedyShorthand(methodName, underlyingMethod);
+	_defineGreedyShorthand(`$${methodName}`, `$${underlyingMethod}`);
+};
 
 defineShorthands('sticky', 'mock', { sticky: true });
 defineShorthands('once', 'mock', { repeat: 1 });

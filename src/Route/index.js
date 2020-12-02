@@ -92,7 +92,9 @@ class Route {
 		debug('Compiled matcher for route');
 		setDebugNamespace();
 		this.matcher = (url, options = {}, request, fetchMock) =>
-			activeMatchers.every(({ matcher }) => matcher(url, options, request, fetchMock));
+			activeMatchers.every(({ matcher }) =>
+				matcher(url, options, request, fetchMock)
+			);
 	}
 
 	limit() {

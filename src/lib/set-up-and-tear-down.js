@@ -1,13 +1,10 @@
 const { debug, setDebugPhase } = require('./debug');
 const FetchMock = {};
 
-const Route = require('../Route');
+const { Route } = require('../Route');
+
 FetchMock.addMatcher = function (matcher) {
 	Route.addMatcher(matcher);
-};
-
-FetchMock.compileRoute = function (config) {
-	return new Route(config);
 };
 
 FetchMock.$mock = function (...args) {
@@ -25,7 +22,7 @@ FetchMock.mock = function (...args) {
 
 FetchMock.addRoute = function (uncompiledRoute) {
 	debug('Adding route', uncompiledRoute);
-	const route = this.compileRoute(uncompiledRoute);
+	const route = Route.newRoute(uncompiledRoute);
 	const clashes = this.routes.filter(({ identifier, method }) => {
 		const isMatch =
 			typeof identifier === 'function'

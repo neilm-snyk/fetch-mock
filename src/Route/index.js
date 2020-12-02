@@ -142,10 +142,14 @@ class Route {
 	static addMatcher(matcher) {
 		Route.registeredMatchers.push(matcher);
 	}
+
+	static newRoute(config) {
+		return new Route(config);
+	}
 }
 
 Route.registeredMatchers = [];
 
 builtInMatchers.forEach(Route.addMatcher);
 
-module.exports = Route;
+module.exports = { Route };

@@ -2,7 +2,7 @@ const { debug } = require('./debug');
 const setUpAndTearDown = require('./set-up-and-tear-down');
 const fetchHandler = require('./fetch-handler');
 const inspecting = require('./inspecting');
-
+const { Route } = require('../Route');
 const FetchMock = Object.assign({}, fetchHandler, setUpAndTearDown, inspecting);
 
 FetchMock.config = {
@@ -18,7 +18,7 @@ FetchMock.createInstance = function () {
 	const instance = Object.create(FetchMock);
 	instance._uncompiledRoutes = (this._uncompiledRoutes || []).slice();
 	instance.routes = instance._uncompiledRoutes.map((config) =>
-		this.compileRoute(config)
+		Route.newRoute(config)
 	);
 	instance.fallbackResponse = this.fallbackResponse || undefined;
 	instance.config = Object.assign({}, this.config || FetchMock.config);

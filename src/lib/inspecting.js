@@ -1,12 +1,12 @@
 const { setDebugPhase, setDebugNamespace, debug } = require('./debug');
 const { normalizeUrl } = require('./request-utils');
-const Route = require('../Route');
+const { Route } = require('../Route');
 const FetchMock = {};
 const isName = (nameOrMatcher) =>
 	typeof nameOrMatcher === 'string' && /^[\da-zA-Z\-]+$/.test(nameOrMatcher);
 
 const filterCallsWithMatcher = function (matcher, options = {}, calls) {
-	({ matcher } = new Route([
+	({ matcher } = Route.newRoute([
 		Object.assign({ matcher, response: 'ok' }, options),
 	]));
 	return calls.filter(({ url, options }) =>

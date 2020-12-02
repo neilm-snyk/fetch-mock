@@ -14,24 +14,6 @@
     "type": "charity",
     "url": "https://www.justgiving.com/refugee-support-europe"
   },
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "useBuiltIns": "entry"
-        }
-      ]
-    ],
-    "plugins": [
-      [
-        "transform-runtime",
-        {
-          "polyfill": true
-        }
-      ]
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/wheresrhys/fetch-mock.git"
@@ -52,7 +34,8 @@
   },
   "homepage": "http://www.wheresrhys.co.uk/fetch-mock",
   "dependencies": {
-    "babel-runtime": "^6.26.0",
+    "@babel/runtime": "^7.0.0",
+    "@babel/core": "^7.0.0",
     "core-js": "^3.0.0",
     "debug": "^4.1.1",
     "glob-to-regexp": "^0.4.0",
@@ -74,11 +57,12 @@
     "node": ">=4.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/plugin-transform-async-to-generator": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "abort-controller": "^3.0.0",
-    "babel-cli": "^6.1.2",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
+    "babel-loader": "^8.0.0",
     "bluebird": "^3.4.6",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",

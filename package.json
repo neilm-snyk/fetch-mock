@@ -35,7 +35,7 @@
   "homepage": "http://www.wheresrhys.co.uk/fetch-mock",
   "dependencies": {
     "@babel/runtime": "^7.0.0",
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.23.2",
     "core-js": "^3.0.0",
     "debug": "^4.1.1",
     "glob-to-regexp": "^0.4.0",
